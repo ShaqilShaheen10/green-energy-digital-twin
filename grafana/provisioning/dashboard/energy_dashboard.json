@@ -1,0 +1,26 @@
+{
+  "title": "Green Energy Digital Twin",
+  "panels": [
+    {
+      "type": "gauge",
+      "title": "Green Energy Generation",
+      "targets": [
+        { "expr": "energy_generation_kw" }
+      ]
+    },
+    {
+      "type": "gauge",
+      "title": "Battery Level",
+      "targets": [
+        { "expr": "battery_level" }
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "Efficiency",
+      "targets": [
+        { "expr": "efficiency" }
+      ]
+    }
+  ]
+}
