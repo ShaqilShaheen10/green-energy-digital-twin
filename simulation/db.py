@@ -1,8 +1,7 @@
 import mysql.connector
 
 conn = mysql.connector.connect(
-    host="localhost",   
-    port=3307,          
+    host="mysql",   
     user="root",
     password="root",
     database="energy"
