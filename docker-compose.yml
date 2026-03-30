@@ -1,6 +1,30 @@
-version: "3.8"
-
 services:
+
+  mysql:
+    image: mysql:8
+    container_name: energy_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: energy
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+
   simulation:
     build: .
     container_name: energy_sim
@@ -9,27 +33,5 @@ services:
     ports:
       - "8000:8000"
 
-  mysql:
-    image: mysql:8
-    container_name: energy_mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: "$haqiL10"
-      MYSQL_DATABASE: energy
-    ports:
-      - "3307:3306"
-
-  prometheus:
-    image: prom/prometheus
-    container_name: prometheus
-    volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
-    ports:
-      - "9090:9090"
-
-  grafana:
-    image: grafana/grafana
-    container_name: grafana
-    ports:
-      - "3000:3000"
-    depends_on:
-      - prometheus
+volumes:
+  mysql_data:
