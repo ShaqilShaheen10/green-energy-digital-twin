@@ -10,13 +10,12 @@ conn = mysql.connector.connect(
 cursor = conn.cursor()
 
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS energy_logs (
+CREATE TABLE IF NOT EXISTS energy_data (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    generation FLOAT,
+    solar FLOAT,
+    wind FLOAT,
     demand FLOAT,
-    battery FLOAT,
-    efficiency FLOAT,
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    generation FLOAT
 )
 """)
 

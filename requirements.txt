@@ -1,5 +1,4 @@
-numpy
 pandas
+numpy
 mysql-connector-python
-prometheus-client
-scikit-learn
+prometheus_client
